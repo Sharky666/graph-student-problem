@@ -1,0 +1,12 @@
+normalization algorithm
+boolean hadMutualConnections;
+
+sort the rooms from shortest in length to longest and iterate over each one
+if the room is full cut it from the array to a "fullRooms" array
+else if the room is empty: iterate over each unsorted node and look for a mutual connection with another unsorted node, if found add them both to the room, otherwise add a unsorted node and set "hadMutualConnections" to false
+else if the room has more than 1 empty slot && hadMutualConnections: iterate over each unsorted node and see if it has a mutual connection, (if found add them both and if they turn the room into a full room: mark the room as uneditable), otherwise set "hadMutualConnections" to false
+else: iterate over each unsorted node and look for a connection with one of the nodes in the room, if found add the unsorted node to the room, otherwise mark the node as problematic
+
+
+problematic nodes iteration:
+iterate over each problematic node and check if the last node in one of the rooms that contains a node that the problematic node is interested in (that isn't the last node) is willing to change rooms with the problematic node
